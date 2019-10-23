@@ -1,6 +1,11 @@
 <h3 align="center" style="margin: 30px 0 35px;">Shell Spawn</h3>
 
 <p align="center">
+  <a href="https://www.npmjs.com/package/shell-spawn"><img alt="npm" src="https://img.shields.io/npm/v/shell-spawn"></a>
+  <a href="https://raw.githubusercontent.com/AngusYang9/shell-spawn/master/LICENSE"><img alt="NPM" src="https://img.shields.io/npm/l/shell-spawn"></a>
+</p>
+
+<p align="center">
   🇬🇧 <a href="./README.md">English Introduce</a>
 </p>
 
@@ -21,23 +26,27 @@ npm install --save shell-spawn
 ## 快速使用
 
 ```js
-var shellSpawn = require('shell-spawn');
+var sp = require('shell-spawn');
 
-shellSpawn("echo 'hello world'")
+sp("echo 'hello world'")
 	.then(function(output) {
 		console.log(output); // hello world\n
 	});
 
 // 执行多个命令
-shellSpawn(["echo 'hello'", "echo 'world'"])
+sp(["echo 'hello'", "echo 'world'"])
 	.then(function(output) {
 		console.log(output); // hello\n world\n
 	});
 
 // 为了方便调试，将 { verbose:true } 作为第二个参数传入
-shellSpawn("echo 'hello world'", { verbose: true });
+sp("echo 'hello world'", { verbose: true });
 // shell-spawn: about to spawn echo 'hello world'
 // shell-spawn: output: hello world
+
+// 为了阻止 stderr 错误的输出，使用 `2>/dev/null` 重定向
+// 注意: 这里的 echo 拼写有误
+sp(["ehco 'hello world'", "2>/dev/null"]);
 ```
 
 ## 配置参数
