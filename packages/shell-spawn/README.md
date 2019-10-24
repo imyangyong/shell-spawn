@@ -29,15 +29,15 @@ npm install --save shell-spawn
 var sp = require('shell-spawn');
 
 sp("echo 'hello world'")
-	.then(function(output) {
-		console.log(output); // hello world\n
-	});
+  .then(function(output) {
+    console.log(output); // hello world\n
+  });
 
 // Multiple commands
 sp(["echo 'hello'", "echo 'world'"])
-	.then(function(output) {
-		console.log(output); // hello\n world\n
-	});
+  .then(function(output) {
+    console.log(output); // hello\n world\n
+  });
 
 // For advanced debug pass in `{ verbose: true }` as the second parameter
 sp("echo 'hello world'", { verbose: true });
@@ -45,8 +45,13 @@ sp("echo 'hello world'", { verbose: true });
 // shell-spawn: output: hello world
 
 // To stop stderr from getting into the output redirect with `2>/dev/null`
-// tips: echo has been misspelled
-sp(["ehco 'hello world'", "2>/dev/null"]);
+// Warning: echo has been misspelled
+sp("ehco 'hello world'").catch(e => {
+  console.log(e); // Error: sh: ehco: command not found
+});
+sp(["ehco 'hello world'", "2>/dev/null"]).catch(e => {
+  console.log(e); // 
+});
 ```
 
 ## Options
