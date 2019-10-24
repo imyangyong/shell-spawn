@@ -29,15 +29,15 @@ npm install --save shell-spawn
 var sp = require('shell-spawn');
 
 sp("echo 'hello world'")
-	.then(function(output) {
-		console.log(output); // hello world\n
-	});
+  .then(function(output) {
+    console.log(output); // hello world\n
+  });
 
 // 执行多个命令
 sp(["echo 'hello'", "echo 'world'"])
-	.then(function(output) {
-		console.log(output); // hello\n world\n
-	});
+  .then(function(output) {
+    console.log(output); // hello\n world\n
+  });
 
 // 为了方便调试，将 { verbose:true } 作为第二个参数传入
 sp("echo 'hello world'", { verbose: true });
@@ -46,7 +46,12 @@ sp("echo 'hello world'", { verbose: true });
 
 // 为了阻止 stderr 错误的输出，使用 `2>/dev/null` 重定向
 // 注意: 这里的 echo 拼写有误
-sp(["ehco 'hello world'", "2>/dev/null"]);
+sp("ehco 'hello world'").catch(e => {
+  console.log(e); // Error: sh: ehco: command not found
+});
+sp(["ehco 'hello world'", "2>/dev/null"]).catch(e => {
+  console.log(e); // 
+});
 ```
 
 ## 配置参数
