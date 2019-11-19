@@ -39,6 +39,12 @@ sp(["echo 'hello'", "echo 'world'"])
     console.log(output); // hello\n world\n
   });
 
+// exec the shell file， { file:true } as the second parameter
+sp(process.cwd() + "/myshell.sh", { file: true })
+  .then(function(output) {
+    console.log(output);
+  });
+
 // For advanced debug pass in `{ verbose: true }` as the second parameter
 sp("echo 'hello world'", { verbose: true });
 // shell-spawn: about to spawn echo 'hello world'
