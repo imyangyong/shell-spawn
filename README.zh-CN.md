@@ -39,12 +39,6 @@ sp(["echo 'hello'", "echo 'world'"])
     console.log(output); // hello\n world\n
   });
 
-// 执行shell文件， 将 { file:true } 作为第二个参数传入
-sp(process.cwd() + "/myshell.sh", { file: true })
-  .then(function(output) {
-    console.log(output);
-  });
-
 // 为了方便调试，将 { verbose:true } 作为第二个参数传入
 sp("echo 'hello world'", { verbose: true });
 // shell-spawn: about to spawn echo 'hello world'
