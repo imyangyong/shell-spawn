@@ -1,6 +1,6 @@
 {
   "name": "shell-spawn",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Executes some shell by child_process.spawn, returns a promise.",
   "main": "./bin/index.js",
   "devDependencies": {},
