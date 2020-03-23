@@ -1,9 +1,8 @@
 {
   "name": "shell-spawn",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Executes some shell by child_process.spawn, returns a promise.",
   "main": "./bin/index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
