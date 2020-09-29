@@ -1,10 +1,22 @@
 {
-  "name": "root",
-  "private": true,
-  "workspaces": [
-    "packages/*"
+  "name": "shell-spawn",
+  "version": "2.0.3",
+  "description": "Executes some shell by child_process.spawn, returns a promise.",
+  "main": "./bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngusYang9/shell-spawn.git"
+  },
+  "keywords": [
+    "shell-spawn"
   ],
-  "devDependencies": {
-    "lerna": "^3.20.2"
-  }
+  "author": "Angus Yang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AngusYang9/shell-spawn/issues"
+  },
+  "homepage": "https://github.com/AngusYang9/shell-spawn#readme"
 }

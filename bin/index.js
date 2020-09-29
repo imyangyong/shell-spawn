@@ -4,7 +4,7 @@ const { spawn } = require('child_process');
 
 function shellSpawn (command = '', options = {}) {
   if (options.verbose) {
-    console.log("shell-spawn: about to spawn " + command);
+    console.log(command);
   }
   
   if (Array.isArray(command)) {
@@ -15,31 +15,25 @@ function shellSpawn (command = '', options = {}) {
   
   const shell = process.platform === 'win32' ? { cmd: 'cmd', arg: '/C' } : { cmd: 'sh', arg: '-c' };
   
-  let child;
-  
-  try {
-    child = spawn(shell.cmd, [shell.arg, command], options);
-  } catch (e) {
-    return Promise.reject(e);
-  }
-  
   return new Promise((resolve, reject) => {
-    let output = "";
+    let child = spawn(shell.cmd, [shell.arg, command], options);
     
+    let output = "";
+
     function toStdErr(data) {
       output += data;
       if (options.verbose) {
-        console.warn("shell-spawn: error: " + data.toString());
+        console.warn(data.toString());
       }
     }
-    
+
     function toStdOut(data) {
       output += data;
       if (options.verbose) {
-        console.log("shell-spawn: output: " + data.toString());
+        console.log(data.toString());
       }
     }
-    
+
     child.stdout.on('data', toStdOut);
     child.stderr.on('data', toStdErr);
     child.on('error', reject);
